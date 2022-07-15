@@ -1,0 +1,16 @@
+{
+  "user": [
+    {
+      "username": "first user",
+      "password": "first password",
+      "age": "25",
+      "address": "New York"
+    }, 
+    {
+      "username": "second user",
+      "password": "second password",
+      "age": "30",
+      "address": "Toronto"
+    }
+  ]
+}

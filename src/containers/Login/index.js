@@ -4,16 +4,27 @@ import {
 } from 'antd-mobile';
 import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
 import './index.css';
+import { loginService } from '../../services/login';
 
 const Login = () => {
   const [form] = Form.useForm();
   const [visible, setVisible] = useState(false);
 
-  const clickHandler = () => {
+  const clickHandler = async () => {
     const values = form.getFieldsValue();
+    const res = await loginService(values.username, values.pwd);
+    if (res && res.length > 0) {
+      Dialog.show({
+        content: 'Login Succeeded',
+        actions: [{ key: 'confirmation', text: 'Confirm' }],
+        closeOnAction: true,
+      });
+      return;
+    }
+
     Dialog.show({
-      content: JSON.stringify(values),
-      actions: [{ key: 'confirmation', text: 'Got it!' }],
+      content: 'Login failed',
+      actions: [{ key: 'confirmFailure', text: 'Accept' }],
       closeOnAction: true,
     });
   };

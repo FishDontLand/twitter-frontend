@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const domain = 'http://localhost:3333';
+const domain = 'http://192.168.2.15:3333';
 
 // parameter transformation before requesting API by adding same domain
 axios.interceptors.request.use((config) => ({

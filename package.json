@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "mock": "npx json-server --watch ./mock/db.json --routes ./mock/routes.json --port 3333"
+    "mock": "npx json-server --watch ./mock/db.json --routes ./mock/routes.json --port 3333 --host 192.168.2.15"
   },
   "eslintConfig": {
     "extends": [

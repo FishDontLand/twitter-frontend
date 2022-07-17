@@ -1,0 +1,11 @@
+@value tblue #1d9bf0;
+@value tgray #868a8c;
+
+.input{
+  border: solid 1px #cfd9de;
+  border-radius: 3px;
+  height: 53px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,21 @@
+@value tblue from "../../common.module.css";
+
+.birthdayInput {
+  composes: input from '../../common.module.css';
+  margin-top: 10px;
+}
+
+.calendarIcon {
+  height: 20px;
+  float: right;
+}
+
+.birthdaySubTitle {
+  color: tblue;
+}
+
+.birthdayPlaceholder {
+  height: 30px;
+  font-size: 15px;
+  line-height: 30px;
+}

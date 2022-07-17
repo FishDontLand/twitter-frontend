@@ -15,3 +15,14 @@ service: getUser = (params) => get('/user', params).then((res) => {
 
 ## backend web service
 json-server
+
+
+## react 5 steps
+Step 1: Break The UI Into A Component Hierarchy
+Step 2: Build A Static Version in React
+
+
+## style techniques
+- css can'
+- scsss easy fit
+-css module no worry about name space, no overwritten styles

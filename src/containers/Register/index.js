@@ -1,6 +1,6 @@
 import { Input, Button } from 'antd-mobile';
-import Header from '../../components/Header';
-import DateInput from '../../components/DateInput';
+import Header from '@components/Header';
+import DateInput from '@components/DateInput';
 import style from './index.module.css';
 
 const Register = () => {

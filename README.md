@@ -26,3 +26,7 @@ Step 2: Build A Static Version in React
 - css can'
 - scsss easy fit
 -css module no worry about name space, no overwritten styles
+
+## config information
+- craco.config.js : config shortcut for webpack
+- jsconfig.json: js related config file used by vscode

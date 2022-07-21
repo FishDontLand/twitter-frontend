@@ -8,14 +8,22 @@
 .calendarIcon {
   height: 20px;
   float: right;
+  display: flex;
 }
 
 .birthdaySubTitle {
   color: tblue;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
+  font-size: 13px;
 }
 
 .birthdayPlaceholder {
   height: 30px;
   font-size: 15px;
-  line-height: 30px;
+  line-height: 0px;
+  padding-top: 0px;
+  margin-top: 10px;
 }

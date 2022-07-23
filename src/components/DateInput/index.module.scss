@@ -1,0 +1,22 @@
+@import "../../common.module.scss";
+
+.birthdayInput {
+  composes: input from '../../common.module.scss';
+  margin-top: 10px;
+  height: 60px;
+}
+
+.calendarIcon {
+  height: 20px;
+  float: right;
+}
+
+.birthdaySubTitle {
+  color: $tblue;
+}
+
+.birthdayPlaceholder {
+  height: 30px;
+  font-size: 15px;
+  line-height: 0px;
+}

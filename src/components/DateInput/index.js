@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { DatePicker } from 'antd-mobile';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import style from './index.module.css';
+import style from './index.module.scss';
 import calendar from '../../assets/calendar.svg';
 
-const DatePickerInput = ({ value, onChange }) => {
+const DateInput = ({ value, onChange }) => {
   const [visible, setVisible] = useState(false);
   const onClickDatePicker = () => {
     setVisible(true);
@@ -15,7 +15,7 @@ const DatePickerInput = ({ value, onChange }) => {
       <DatePicker
         visible={visible}
         onClose={() => { setVisible(false); }}
-        onConfirm={(val) => { onChange(val); }}
+        onConfirm={(val) => { onChange(moment(val).format('YYYY-MM-DD')); }}
         style={style.datepicker}
       />
       <div className={style.birthdayInput} onClick={onClickDatePicker}>
@@ -29,9 +29,9 @@ const DatePickerInput = ({ value, onChange }) => {
   );
 };
 
-DatePickerInput.propTypes = {
+DateInput.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-export default DatePickerInput;
+export default DateInput;

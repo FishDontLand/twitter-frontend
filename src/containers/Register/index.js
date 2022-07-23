@@ -10,6 +10,7 @@ const REGISTER_METHOD = {
 };
 
 const Register = () => {
+  const [form] = Form.useForm();
   const [registerMethod, setRegisterMethod] = useState(REGISTER_METHOD.PHONE);
   const onRegisterMethodChange = () => {
     if (registerMethod === REGISTER_METHOD.PHONE) {
@@ -24,25 +25,32 @@ const Register = () => {
     name: '',
     phone: '',
     email: '',
-    birthday: '20220203',
+    birthday: '2022-02-03',
   });
+
+  const nextStep = async () => {
+    const validation = await form.validateFields();
+    if (validation) {
+      console.log(validation);
+    }
+  };
 
   return (
     <div>
       <Header />
       <div className={style.form}>
         <div className={style.formTitle}>Create your account</div>
-        <Form initialValues={formData} className={style.formContainer}>
-          <Form.Item name="name">
+        <Form form={form} initialValues={formData} className={style.formContainer}>
+          <Form.Item name="name" rules={[{ required: true, message: 'name required' }]}>
             <Input placeholder="Name" className={style.input} />
           </Form.Item>
           {registerMethod === REGISTER_METHOD.PHONE && (
-          <Form.Item name="phone">
+          <Form.Item name="phone" rules={[{ required: true, message: 'phone required' }]}>
             <Input placeholder="Phone" className={style.input} />
           </Form.Item>
           )}
           {registerMethod === REGISTER_METHOD.EMAIL && (
-          <Form.Item name="email">
+          <Form.Item name="email" rules={[{ required: true, message: 'email required' }]}>
             <Input placeholder="Email" className={style.input} />
           </Form.Item>
           )}
@@ -60,7 +68,7 @@ const Register = () => {
         </Form>
       </div>
       <div className={style.footer}>
-        <Button className={style.footerButton}>Next</Button>
+        <Button className={style.footerButton} onClick={nextStep}>Next</Button>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Input, Button, Form } from 'antd-mobile';
 import Header from '@components/Header';
 import DateInput from '@components/DateInput';
+import Tinput from '@components/Tinput';
 import style from './index.module.scss';
 
 const REGISTER_METHOD = {
@@ -42,11 +43,11 @@ const Register = () => {
         <div className={style.formTitle}>Create your account</div>
         <Form form={form} initialValues={formData} className={style.formContainer}>
           <Form.Item name="name" rules={[{ required: true, message: 'name required' }]}>
-            <Input placeholder="Name" className={style.input} />
+            <Tinput length={50} label="Name" />
           </Form.Item>
           {registerMethod === REGISTER_METHOD.PHONE && (
           <Form.Item name="phone" rules={[{ required: true, message: 'phone required' }]}>
-            <Input placeholder="Phone" className={style.input} />
+            <Tinput length={10} label="phone" />
           </Form.Item>
           )}
           {registerMethod === REGISTER_METHOD.EMAIL && (

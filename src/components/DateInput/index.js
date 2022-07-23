@@ -30,8 +30,13 @@ const DateInput = ({ value, onChange }) => {
 };
 
 DateInput.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+};
+
+DateInput.defaultProps = {
+  value: '',
+  onChange: () => {},
 };
 
 export default DateInput;

@@ -1,11 +1,11 @@
 $tblue: #1d9bf0;
 $tgray: #868a8c;
+$tgraywhite: #cfd9de;
 
 .input{
-  border: solid 1px #cfd9de;
+  border: solid 1px $tgraywhite;
   border-radius: 3px;
   height: 53px;
   padding: 5px 10px;
   box-sizing: border-box;
-  margin-bottom: 20px;
 }

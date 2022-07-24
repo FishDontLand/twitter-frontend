@@ -49,8 +49,8 @@
     text-align: center;
     width: 100%;
   }
-  
-  .footerButton {
+
+  .footerButtonDisabled {
     margin: 0 auto;
     border-radius: 50px;
     background-color: $tgray;
@@ -58,5 +58,36 @@
     font-size: 14px;
     width: 80%;
     height: 40px;
+  }
+
+  .footerButton {
+    composes: footerButtonDisabled;
+    background-color: #000;
+  }
+
+  .showLabel {
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+    :global(span) {
+      color: $tgray;
+    }
+  }
+
+  .showLabelContainer {
+    border: solid 1px $tgraywhite;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .label {
+    font-size: 18px;
+    margin: 30px 0 10px 0;
+  }
+  
+  .showTip {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
   }
   

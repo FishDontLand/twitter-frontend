@@ -1,6 +1,7 @@
+import { Toast } from 'antd-mobile';
 import axios from 'axios';
 
-const domain = 'http://192.168.2.15:3333';
+const domain = 'http://localhost:3333';
 
 // parameter transformation before requesting API by adding same domain
 axios.interceptors.request.use((config) => ({
@@ -9,7 +10,9 @@ axios.interceptors.request.use((config) => ({
 }));
 
 // Intercept the response, including data transformation and error handling
-axios.interceptors.response.use((response) => response.data, (err) => Promise.reject(err));
+axios.interceptors.response.use((response) => response.data, () => {
+  Toast.show('service error');
+});
 
 // get information from server
 export const get = (url) => axios.get(url);

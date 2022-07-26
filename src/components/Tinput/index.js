@@ -41,7 +41,7 @@ const Tinput = ({
         {label}
         {hide && length && (
         <span className={hide ? style.labelRightFocused : style.labelRight}>
-          {value.length}
+          {value?.length}
           /
           {length}
         </span>

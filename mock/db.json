@@ -1,16 +1,46 @@
 {
   "user": [
     {
-      "username": "first user",
-      "password": "first password",
-      "age": "25",
-      "address": "New York"
-    }, 
+      "password": "dong",
+      "name": "asdf",
+      "phone": "1232131231",
+      "birthday": "2022-02-03",
+      "id": 1
+    },
     {
-      "username": "second user",
-      "password": "second password",
-      "age": "30",
-      "address": "Toronto"
+      "password": "df",
+      "name": "asdf",
+      "phone": "1232131231",
+      "birthday": "2022-02-03",
+      "id": 2
+    },
+    {
+      "password": "dong",
+      "username": "asdf",
+      "phone": "2343123123",
+      "birthday": "2022-02-03",
+      "id": 3
+    },
+    {
+      "password": "dong",
+      "username": "df",
+      "phone": "1232131231",
+      "birthday": "2022-02-03",
+      "id": 4
+    },
+    {
+      "password": "dong",
+      "username": "df",
+      "phone": "1232131231",
+      "birthday": "2022-02-03",
+      "id": 5
+    },
+    {
+      "password": "dong",
+      "username": "dsaf",
+      "phone": "3132131232",
+      "birthday": "2022-02-03",
+      "id": 6
     }
   ]
 }

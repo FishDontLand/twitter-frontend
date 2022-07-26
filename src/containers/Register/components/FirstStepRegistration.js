@@ -66,7 +66,7 @@ const FirstStepRegistration = ({
           className={style.formContainer}
           onValuesChange={onValuesChange}
         >
-          <Form.Item name="name" rules={[{ required: true, message: 'name required' }]}>
+          <Form.Item name="username" rules={[{ required: true, message: 'name required' }]}>
             <Tinput length={50} label="Name" />
           </Form.Item>
           {registerMethod === REGISTER_METHOD.PHONE && (

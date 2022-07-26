@@ -23,7 +23,9 @@
         "alias": {
           "map": [
             ["@components", "./src/components"],
-            ["@assets", "./src/asssets"]
+            ["@assets", "./src/assets"],
+            ["@utils", "./src/utils"],
+            ["@services", "./src/services"]
           ]
         }
     }

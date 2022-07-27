@@ -1,68 +1,68 @@
-import { useState } from 'react';
+import Tinput from '@components/Tinput';
 import {
-  Button, Input, Form, Dialog,
+  Button, Form, Dialog,
 } from 'antd-mobile';
-import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
-import './index.css';
-import { loginService } from '../../services/login';
+import Header from '@components/Header';
+import style from './index.module.scss';
+import { login } from '../../services/login';
 
 const Login = () => {
   const [form] = Form.useForm();
-  const [visible, setVisible] = useState(false);
 
   const clickHandler = async () => {
-    const values = form.getFieldsValue();
-    const res = await loginService(values.username, values.pwd);
-    if (res && res.length > 0) {
+    const values = await form.getFieldsValue();
+    if (values && values.username && values.pwd) {
+      const res = await login(values.username, values.pwd);
+      if (res && res.success && res.data.length > 0) {
+        Dialog.show({
+          content: 'Login Succeeded',
+          actions: [{ key: 'confirmation', text: 'Confirm' }],
+          closeOnAction: true,
+        });
+        return;
+      }
+
       Dialog.show({
-        content: 'Login Succeeded',
-        actions: [{ key: 'confirmation', text: 'Confirm' }],
+        content: 'Login failed',
+        actions: [{ key: 'confirmFailure', text: 'Accept' }],
         closeOnAction: true,
       });
-      return;
     }
-
-    Dialog.show({
-      content: 'Login failed',
-      actions: [{ key: 'confirmFailure', text: 'Accept' }],
-      closeOnAction: true,
-    });
   };
 
   return (
-    <div className="login">
-      <Form
-        layout="horizontal"
-        mode="card"
-        form={form}
-        footer={
-          <Button color="primary" onClick={clickHandler}>sign in</Button>
-        }
-      >
-        <Form.Item label="Username" name="username">
-          <Input placeholder="Please enter here" />
-        </Form.Item>
-        <Form.Item
-          label="Password"
-          name="pwd"
-          extra={(
-            <div className="eye">
-              {!visible ? (
-                <EyeInvisibleOutline onClick={() => setVisible(true)} />
-              ) : (
-                <EyeOutline onClick={() => setVisible(false)} />
-              )}
-            </div>
-          )}
+    <>
+      <Header />
+      <div className={style.login}>
+
+        <div className={style.formTitle}>
+          Login Twitter
+        </div>
+        <Form
+          className={style.formContainer}
+          layout="horizontal"
+          form={form}
         >
-          <Input
-            placeholder="Input Password"
-            type={visible ? 'text' : 'password'}
-            clearable
-          />
-        </Form.Item>
-      </Form>
-    </div>
+          <Form.Item name="username" rules={[{ required: true, message: 'Username must be provided' }]}>
+            <Tinput label="Username" />
+          </Form.Item>
+          <Form.Item
+            name="pwd"
+            rules={[{ required: true, message: 'Password must be provided' }]}
+          >
+            <Tinput
+              label="Password"
+            />
+          </Form.Item>
+          <Button className={style.footerButton} onClick={clickHandler}>sign in</Button>
+        </Form>
+        <div className={style.goToRegister}>
+          No account?
+          {' '}
+          <a href="/" target="_blank">Sign up</a>
+        </div>
+      </div>
+    </>
   );
 };
 

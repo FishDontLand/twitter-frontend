@@ -38,6 +38,18 @@
   display: none;
 }
 
+.eye{
+  margin-top: 15px;
+  border-top: 0px;
+  padding-top: 0px;
+  width: 15px;
+  height: 15px;
+}
+
+.passwordInput{
+  display: flex;
+}
+
 .labelRightFocused {
   float: right;
 }

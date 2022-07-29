@@ -1,13 +1,23 @@
 import Tinput from '@components/Tinput';
+import { useEffect } from 'react';
 import {
   Button, Form, Dialog,
 } from 'antd-mobile';
-import Header from '@components/Header';
+import { Link } from 'react-router-dom';
+import { useAppContext } from '@utils/context';
 import style from './index.module.scss';
 import { login } from '../../services/login';
 
 const Login = () => {
   const [form] = Form.useForm();
+
+  const [, setStore] = useAppContext();
+
+  useEffect(() => {
+    setStore({
+      closeHeaderHandler: null,
+    });
+  }, []);
 
   const clickHandler = async () => {
     const values = await form.getFieldsValue();
@@ -31,38 +41,35 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Header />
-      <div className={style.login}>
+    <div className={style.login}>
 
-        <div className={style.formTitle}>
-          Login Twitter
-        </div>
-        <Form
-          className={style.formContainer}
-          layout="horizontal"
-          form={form}
-        >
-          <Form.Item name="username" rules={[{ required: true, message: 'Username must be provided' }]}>
-            <Tinput label="Username" />
-          </Form.Item>
-          <Form.Item
-            name="pwd"
-            rules={[{ required: true, message: 'Password must be provided' }]}
-          >
-            <Tinput
-              label="Password"
-            />
-          </Form.Item>
-          <Button className={style.footerButton} onClick={clickHandler}>sign in</Button>
-        </Form>
-        <div className={style.goToRegister}>
-          No account?
-          {' '}
-          <a href="/" target="_blank">Sign up</a>
-        </div>
+      <div className={style.formTitle}>
+        Login Twitter
       </div>
-    </>
+      <Form
+        className={style.formContainer}
+        layout="horizontal"
+        form={form}
+      >
+        <Form.Item name="username" rules={[{ required: true, message: 'Username must be provided' }]}>
+          <Tinput label="Username" />
+        </Form.Item>
+        <Form.Item
+          name="pwd"
+          rules={[{ required: true, message: 'Password must be provided' }]}
+        >
+          <Tinput
+            label="Password"
+          />
+        </Form.Item>
+        <Button className={style.footerButton} onClick={clickHandler}>sign in</Button>
+      </Form>
+      <div className={style.goToRegister}>
+        No account?
+        {' '}
+        <Link to="/register">Sign up</Link>
+      </div>
+    </div>
   );
 };
 

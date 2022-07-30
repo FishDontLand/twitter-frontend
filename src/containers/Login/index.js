@@ -1,67 +1,74 @@
-import { useState } from 'react';
+import Tinput from '@components/Tinput';
+import { useEffect } from 'react';
 import {
-  Button, Input, Form, Dialog,
+  Button, Form, Dialog,
 } from 'antd-mobile';
-import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
-import './index.css';
-import { loginService } from '../../services/login';
+import { Link } from 'react-router-dom';
+import { useAppContext } from '@utils/context';
+import style from './index.module.scss';
+import { login } from '../../services/login';
 
 const Login = () => {
   const [form] = Form.useForm();
-  const [visible, setVisible] = useState(false);
+
+  const [, setStore] = useAppContext();
+
+  useEffect(() => {
+    setStore({
+      closeHeaderHandler: null,
+    });
+  }, []);
 
   const clickHandler = async () => {
-    const values = form.getFieldsValue();
-    const res = await loginService(values.username, values.pwd);
-    if (res && res.length > 0) {
+    const values = await form.getFieldsValue();
+    if (values && values.username && values.pwd) {
+      const res = await login(values.username, values.pwd);
+      if (res && res.success && res.data.length > 0) {
+        Dialog.show({
+          content: 'Login Succeeded',
+          actions: [{ key: 'confirmation', text: 'Confirm' }],
+          closeOnAction: true,
+        });
+        return;
+      }
+
       Dialog.show({
-        content: 'Login Succeeded',
-        actions: [{ key: 'confirmation', text: 'Confirm' }],
+        content: 'Login failed',
+        actions: [{ key: 'confirmFailure', text: 'Accept' }],
         closeOnAction: true,
       });
-      return;
     }
-
-    Dialog.show({
-      content: 'Login failed',
-      actions: [{ key: 'confirmFailure', text: 'Accept' }],
-      closeOnAction: true,
-    });
   };
 
   return (
-    <div className="login">
+    <div className={style.login}>
+
+      <div className={style.formTitle}>
+        Login Twitter
+      </div>
       <Form
+        className={style.formContainer}
         layout="horizontal"
-        mode="card"
         form={form}
-        footer={
-          <Button color="primary" onClick={clickHandler}>sign in</Button>
-        }
       >
-        <Form.Item label="Username" name="username">
-          <Input placeholder="Please enter here" />
+        <Form.Item name="username" rules={[{ required: true, message: 'Username must be provided' }]}>
+          <Tinput label="Username" />
         </Form.Item>
         <Form.Item
-          label="Password"
           name="pwd"
-          extra={(
-            <div className="eye">
-              {!visible ? (
-                <EyeInvisibleOutline onClick={() => setVisible(true)} />
-              ) : (
-                <EyeOutline onClick={() => setVisible(false)} />
-              )}
-            </div>
-          )}
+          rules={[{ required: true, message: 'Password must be provided' }]}
         >
-          <Input
-            placeholder="Input Password"
-            type={visible ? 'text' : 'password'}
-            clearable
+          <Tinput
+            label="Password"
           />
         </Form.Item>
+        <Button className={style.footerButton} onClick={clickHandler}>sign in</Button>
       </Form>
+      <div className={style.goToRegister}>
+        No account?
+        {' '}
+        <Link to="/register">Sign up</Link>
+      </div>
     </div>
   );
 };

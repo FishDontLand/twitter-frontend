@@ -25,7 +25,8 @@
             ["@components", "./src/components"],
             ["@assets", "./src/assets"],
             ["@utils", "./src/utils"],
-            ["@services", "./src/services"]
+            ["@services", "./src/services"],
+            ["@containers", "./src/containers"]
           ]
         }
     }

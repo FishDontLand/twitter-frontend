@@ -1,7 +1,11 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { Input } from 'antd-mobile';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+import { EyeInvisibleOutline, EyeOutline } from 'antd-mobile-icons';
 import style from './index.module.scss';
+// import openEye from '../../assets/open-eye.svg';
+// import closeEye from '../../assets/close-eye.svg';
 
 const Tinput = ({
   label, value, length, onChange,
@@ -22,8 +26,9 @@ const Tinput = ({
   };
 
   const onBlur = () => {
-    if (value.length === 0) {
+    if (!value || value.length === 0) {
       setIsFocused(false);
+      setHide(false);
     }
     setHide(false);
   };
@@ -33,6 +38,12 @@ const Tinput = ({
       return;
     }
     onChange(val);
+  };
+
+  const [eyeOpen, setEyeOpen] = useState(false);
+
+  const onClickEye = () => {
+    setEyeOpen(!eyeOpen);
   };
 
   return (
@@ -47,13 +58,18 @@ const Tinput = ({
         </span>
         )}
       </div>
-      <Input
-        className={isFocused ? style.inputItemFocused : style.input}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        value={value}
-        onChange={onChangeHandler}
-      />
+      <div className={style.passwordInput}>
+        <Input
+          className={isFocused ? style.inputItemFocused : style.input}
+          type={label === 'Password' && !eyeOpen ? 'password' : 'text'}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          value={value}
+          onChange={onChangeHandler}
+        />
+        {label === 'Password' && isFocused && eyeOpen && value && value.length > 0 && <EyeOutline className={style.eye} onClick={onClickEye} />}
+        {label === 'Password' && isFocused && !eyeOpen && value && value.length > 0 && <EyeInvisibleOutline className={style.eye} onClick={onClickEye} />}
+      </div>
     </div>
   );
 };

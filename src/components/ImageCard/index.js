@@ -1,6 +1,8 @@
-import { Image } from 'antd-mobile';
+import { Image, ImageViewer } from 'antd-mobile';
+import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Bar from '@components/Bar';
 import style from './index.module.scss';
 
 /**
@@ -15,6 +17,8 @@ import style from './index.module.scss';
 */
 const ImageCard = ({
   imgs,
+  likeCount,
+  commentCount,
 }) => {
   const getWrapper = () => {
     switch (imgs.length) {
@@ -31,18 +35,34 @@ const ImageCard = ({
     }
   };
 
+  const imageViewRef = useRef();
+  const [visible, setVisible] = useState(false);
+  const onClickImage = (i) => {
+    setVisible(true);
+    imageViewRef.current.swipeTo(i, true);
+  };
   return (
     <div className={style.container}>
       <div className={classNames(style.wrapper, getWrapper())}>
-        {imgs.map((img, i) => (<Image className={classNames(style.img, `img${i}`)} key={classNames(img, i)} src={img} fit="cover" alt="" />))}
+        {imgs.map((img, i) => (<Image onClick={() => onClickImage(i)} className={classNames(style.img, `img${i}`)} key={classNames(img, i)} src={img} fit="cover" alt="" />))}
       </div>
-
+      <div style={{ transition: '10s' }}>
+        <ImageViewer.Multi
+          ref={imageViewRef}
+          images={imgs}
+          visible={visible}
+          onClose={() => { setVisible(false); }}
+        />
+      </div>
+      {visible && <Bar isBottom likeCount={likeCount} commentCount={commentCount} />}
     </div>
   );
 };
 
 ImageCard.propTypes = {
   imgs: PropTypes.arrayOf(PropTypes.string),
+  likeCount: PropTypes.number.isRequired,
+  commentCount: PropTypes.number.isRequired,
 };
 
 ImageCard.defaultProps = { imgs: [] };

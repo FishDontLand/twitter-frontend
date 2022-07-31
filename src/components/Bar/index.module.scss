@@ -8,6 +8,14 @@
   }
 }
 
+.containerBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 .icon {
   height: 20px;
   vertical-align: middle;

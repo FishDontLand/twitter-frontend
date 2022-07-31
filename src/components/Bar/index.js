@@ -5,6 +5,7 @@ import like from '@assets/like.svg';
 import share from '@assets/share.svg';
 import retweet from '@assets/retweet.svg';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import style from './index.module.scss';
 
 /**
@@ -43,6 +44,7 @@ const getBar = ({
 const Bar = ({
   likeCount,
   commentCount,
+  isBottom,
 }) => {
   const [activeKey, setActiveKey] = useState();
 
@@ -51,7 +53,11 @@ const Bar = ({
   };
 
   return (
-    <div className={style.container}>
+    <div className={classNames({
+      [style.container]: !isBottom,
+      [style.containerBottom]: isBottom,
+    })}
+    >
       <TabBar activeKey={activeKey} onChange={onChangeTabItem}>
         {getBar({
           likeCount,
@@ -67,11 +73,13 @@ const Bar = ({
 Bar.propTypes = {
   likeCount: PropTypes.number,
   commentCount: PropTypes.number,
+  isBottom: PropTypes.bool,
 };
 
 Bar.defaultProps = {
   likeCount: 0,
   commentCount: 0,
+  isBottom: false,
 };
 
 export default Bar;

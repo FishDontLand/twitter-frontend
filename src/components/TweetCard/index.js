@@ -85,7 +85,11 @@ const TweetCard = () => {
             {tweet.content}
           </div>
           <div className={style.photo}>
-            <ImageCard imgs={tweet.photo_urls} />
+            <ImageCard
+              imgs={tweet.photo_urls}
+              commentCount={tweet.comments_count}
+              likeCount={tweet.likes_count}
+            />
           </div>
           <div className={style.bar}>
             <Bar commentCount={tweet.comments_count} likeCount={tweet.likes_count} />

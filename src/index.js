@@ -7,6 +7,7 @@ import Login from '@containers/Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from '@containers/App';
 import { ContextProvider } from '@utils/context';
+import Tweets from '@containers/Tweets';
 import { startVconsole } from './utils';
 import Register from './containers/Register';
 
@@ -21,6 +22,7 @@ root.render(
             <Route path="/" element={<App />}>
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/tweets" element={<Tweets />} />
             </Route>
           </Routes>
         </BrowserRouter>

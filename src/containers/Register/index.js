@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from '@services/register';
 import { Toast } from 'antd-mobile';
 import { useAppContext } from '@utils/context';
-import { useNavigate } from 'react-router-dom';
 import Show from '../../components/show/Show';
 import FirstStepRegistration from './components/FirstStepRegistration';
 import SecondStepRegistration from './components/SecondStepRegistration';

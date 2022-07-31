@@ -1,0 +1,45 @@
+{
+	"Print to console": {
+		"scope": "javascript,typescript",
+		"prefix": "log",
+		"body": [
+			"console.log('$1', $1);",
+		],
+		"description": "Log output to console"
+	},
+
+	"create component": {
+		"scope": "javascript,typescript",
+		"prefix": "createcomponent",
+		"body": [
+			"import { useState, useEffect } from 'react';",
+			"import style from './index.module.scss';",
+			"",
+			"/**",
+			 "*",
+			 "*/",
+			"const $1 = () => {",
+			"\tconst [data, setData] = useState();",
+			"\tuseEffect(() => {",
+			"\t\tconsole.log('data', data);",
+			"\t\tsetData([]);",
+			"\t}, []);",
+			"\treturn <div className={style.container}>{data}</div>;",
+			"};",
+			"",
+			"export default $1;",
+			"",
+		],
+		"description": "Log output to console"
+	},
+
+	"Insert PropTypes": {
+		"scope": "javascript,typescript",
+		"prefix": "prop",
+		"body": [
+			"import PropTypes from 'prop-types';",
+		],
+		"description": "Log output to console"
+	},
+
+}

@@ -5,6 +5,14 @@ import PropTypes from 'prop-types';
 
 const defaultStore = {
   closeHeaderHandler: null,
+  user: {
+    password: 'dong',
+    name: 'asdf',
+    phone: 1232131231,
+    birthday: '2022-02-03',
+    avatar_url: 'https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2021/08/12/realtime/13315182.jpg',
+    id: 1,
+  },
 };
 
 const AppContext = createContext();
@@ -12,8 +20,14 @@ const AppContext = createContext();
 export const ContextProvider = ({ children }) => {
   const [store, setStore] = useState(defaultStore);
 
+  const update = (v) => {
+    setStore((prevValue) => ({
+      ...prevValue,
+      ...v,
+    }));
+  };
   const value = useMemo(() => ({
-    store, setStore,
+    store, update,
   }), [store]);
 
   return (
@@ -30,5 +44,5 @@ ContextProvider.propTypes = {
 export const useAppContext = () => {
   const context = useContext(AppContext);
 
-  return [context.store, context.setStore];
+  return [context.store, context.update];
 };

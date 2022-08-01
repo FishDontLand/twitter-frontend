@@ -5,13 +5,14 @@ import style from './index.module.scss';
 * Tweets page
 */
 const Tweets = () => {
-  const [data, setData] = useState();
+  const [, setData] = useState();
   useEffect(() => {
-    console.log('data', data);
     setData([]);
   }, []);
   return (
     <div className={style.container}>
+      <TweetCard />
+      <TweetCard />
       <TweetCard />
     </div>
   );

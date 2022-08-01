@@ -5,6 +5,7 @@
       "name": "asdf",
       "phone": "1232131231",
       "birthday": "2022-02-03",
+      "avatar_url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2021/08/12/realtime/13315182.jpg",
       "id": 1
     },
     {
@@ -12,6 +13,7 @@
       "name": "asdf",
       "phone": "1232131231",
       "birthday": "2022-02-03",
+      "avatar_url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2021/08/12/realtime/13315182.jpg",
       "id": 2
     },
     {
@@ -19,6 +21,7 @@
       "username": "asdf",
       "phone": "2343123123",
       "birthday": "2022-02-03",
+      "avatar_url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2021/08/12/realtime/13315182.jpg",
       "id": 3
     },
     {
@@ -26,6 +29,7 @@
       "username": "df",
       "phone": "1232131231",
       "birthday": "2022-02-03",
+      "avatar_url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2021/08/12/realtime/13315182.jpg",
       "id": 4
     },
     {
@@ -33,6 +37,7 @@
       "username": "df",
       "phone": "1232131231",
       "birthday": "2022-02-03",
+      "avatar_url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2021/08/12/realtime/13315182.jpg",
       "id": 5
     },
     {
@@ -40,6 +45,7 @@
       "username": "dsaf",
       "phone": "3132131232",
       "birthday": "2022-02-03",
+      "avatar_url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2021/08/12/realtime/13315182.jpg",
       "id": 6
     }
   ]

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TabBar } from 'antd-mobile';
 import comment from '@assets/comment.svg';
 import like from '@assets/like.svg';
@@ -15,10 +16,11 @@ import style from './index.module.scss';
 const getBar = ({
   commentCount,
   likeCount,
+  nav,
 }) => [{
   key: 'comment',
   icon: (
-    <div>
+    <div onClick={() => nav('/comment')}>
       <img className={style.icon} src={comment} alt="comment" />
       {commentCount > 0 && <span className={style.count}>{commentCount}</span>}
     </div>),
@@ -47,6 +49,7 @@ const Bar = ({
   isBottom,
 }) => {
   const [activeKey, setActiveKey] = useState();
+  const nav = useNavigate();
 
   const onChangeTabItem = (key) => {
     setActiveKey(key);
@@ -62,6 +65,7 @@ const Bar = ({
         {getBar({
           likeCount,
           commentCount,
+          nav,
         }).map((item) => (
           <TabBar.Item key={item.key} icon={item.icon} />
         ))}

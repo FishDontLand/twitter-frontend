@@ -13,6 +13,12 @@ const Bottom = () => {
   const [, setStore] = useAppContext();
   const navigate = useGoto();
   const item = useAttribute();
+  const itemDisplay = (it) => {
+    if (!it.inBottomBar) {
+      return null;
+    }
+    return <TabBar.Item key={it.key} icon={it.icon} />;
+  };
 
   useEffect(() => {
     if (item) {
@@ -26,14 +32,14 @@ const Bottom = () => {
     navigate(key);
   };
 
+  if (item.hideCommonHeader) {
+    return null;
+  }
+
   return (
     <div className={style.container}>
       <TabBar onChange={onClickTabItem}>
-        {
-      menu.map((it) => (
-        <TabBar.Item key={it.key} icon={it.icon} />
-      ))
-}
+        {menu.map(itemDisplay)}
       </TabBar>
     </div>
   );

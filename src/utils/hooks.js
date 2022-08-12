@@ -1,12 +1,14 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, matchPath } from 'react-router-dom';
 import { menu } from './constants';
 import { useAppContext } from './context';
 
 // obtain current item on the menu
 export const useAttribute = () => {
   const location = useLocation();
-  const it = menu.find((item) => item.link === location.pathname);
-
+  const it = menu.find((item) => matchPath(item.link, location.pathname));
+  if (!it) {
+    return {};
+  }
   return it;
 };
 
@@ -15,6 +17,9 @@ export const useGoto = () => {
   const navigate = useNavigate();
   const [, setStore] = useAppContext();
   return (key) => {
+    if (!key) {
+      return navigate(-1);
+    }
     const it = menu.find((item) => item.key === key);
     if (!it) return navigate('/');
     setStore({

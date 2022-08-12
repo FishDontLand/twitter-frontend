@@ -14,7 +14,8 @@
     "react/react-in-jsx-scope": 0,
     "react/function-component-definition": 0,
     "linebreak-style": ["error", "windows"],
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
   },
   "env": {
     "browser": true

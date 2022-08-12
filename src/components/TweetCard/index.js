@@ -92,7 +92,7 @@ const TweetCard = () => {
             />
           </div>
           <div className={style.bar}>
-            <Bar commentCount={tweet.comments_count} likeCount={tweet.likes_count} />
+            <Bar id={tweet.id} commentCount={tweet.comments_count} likeCount={tweet.likes_count} />
           </div>
         </div>
       </div>

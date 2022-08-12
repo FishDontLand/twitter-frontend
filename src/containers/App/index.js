@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import { Toast } from 'antd-mobile';
 import Cookies from 'js-cookie';
 import { useAppContext } from '@utils/context';
+import { useAttribute } from '@utils/hooks';
+import CreateTweetButton from '@components/CreateTweetButton';
 import style from './index.module.scss';
 import { getUser } from '../../services/login';
 
@@ -12,6 +14,7 @@ const App = () => {
   const [, setStore] = useAppContext();
   const nav = useNavigate();
   const location = useLocation();
+  const attributes = useAttribute();
   useEffect(() => {
     const init = async () => {
       const userId = Cookies.get('userId');
@@ -35,11 +38,16 @@ const App = () => {
     init();
   }, []);
 
+  const onClickCreateTweet = () => {
+    nav('/createTweet');
+  };
+
   return (
     <div className={style.layout}>
-      <Header />
+      {!attributes.hideCommonHeader && <Header />}
       <Outlet />
       <Bottom />
+      {!attributes.hideCommonHeader && <CreateTweetButton onClick={onClickCreateTweet} />}
     </div>
   );
 };

@@ -41,7 +41,6 @@ const Register = () => {
       password,
       ...userInfo,
     });
-    console.log(res);
     if (res.success) {
       Toast.show('Successfully registered');
       return;

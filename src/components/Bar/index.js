@@ -17,11 +17,12 @@ const getBar = ({
   commentCount,
   likeCount,
   nav,
+  id,
 }) => [{
   key: 'comment',
   icon: (
-    <div onClick={() => nav('/comment')}>
-      <img className={style.icon} src={comment} alt="comment" />
+    <div onClick={() => nav(`/comments/${id}`)}>
+      <img className={style.icon} src={comment} alt="comments" />
       {commentCount > 0 && <span className={style.count}>{commentCount}</span>}
     </div>),
 },
@@ -44,6 +45,7 @@ const getBar = ({
 ];
 
 const Bar = ({
+  id,
   likeCount,
   commentCount,
   isBottom,
@@ -66,6 +68,7 @@ const Bar = ({
           likeCount,
           commentCount,
           nav,
+          id,
         }).map((item) => (
           <TabBar.Item key={item.key} icon={item.icon} />
         ))}
@@ -75,6 +78,7 @@ const Bar = ({
 };
 
 Bar.propTypes = {
+  id: PropTypes.number.isRequired,
   likeCount: PropTypes.number,
   commentCount: PropTypes.number,
   isBottom: PropTypes.bool,

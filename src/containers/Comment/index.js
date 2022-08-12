@@ -1,9 +1,13 @@
 import { useAppContext } from '@utils/context';
-import { Steps, TextArea } from 'antd-mobile';
+import { Steps, TextArea, Toast } from 'antd-mobile';
 import moment from 'moment';
 import { useState } from 'react';
+import Header from '@components/Header';
+import TButton from '@components/TButton';
+import { createComment } from '@services/comments';
+import { useParams } from 'react-router-dom';
+import { useGoto } from '@utils/hooks';
 import style from './index.module.scss';
-
 /**
 * Comment Component
 */
@@ -46,8 +50,31 @@ const defaultTweet = {
 const Comment = () => {
   const [store] = useAppContext();
   const [data] = useState(defaultTweet);
+  const [text, setText] = useState('');
+  const params = useParams();
+  const go = useGoto();
+  const onClickReply = () => {
+    createComment({
+      content: text,
+      tweet_id: params.id,
+    }).then((res) => {
+      if (res?.success) {
+        Toast.show('Successfully Replied');
+        go();
+        return;
+      }
+      Toast.show('Failed to Reply');
+    });
+  };
+
+  const onChangeText = (v) => {
+    setText(v);
+  };
   return (
     <div className={style.container}>
+      <Header>
+        <TButton onClick={onClickReply} disabled={text.length === 0}>Reply</TButton>
+      </Header>
       <Steps
         direction="vertical"
       >
@@ -84,7 +111,7 @@ const Comment = () => {
           }
           title={(
             <div>
-              <TextArea className={style.text} placeholder="Type here" />
+              <TextArea onChange={onChangeText} value={text} className={style.text} placeholder="Type here" />
             </div>
           )}
         />

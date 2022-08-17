@@ -1,4 +1,6 @@
 {
+  "/api/likes/cancel": "/likes",
+  "/api/likes": "/likes",
   "/api/tweets": "/tweets",
   "/api/comments": "/comments", 
   "/api/accounts/signup": "/user",

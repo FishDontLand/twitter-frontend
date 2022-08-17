@@ -21,8 +21,33 @@
   vertical-align: middle;
 }
 
+.copyContainer {
+  display:flex;
+  padding: 0px;
+  height: 52px;
+}
+
+.copyIcon {
+  height: 25px;
+  margin-right: 10px;
+  margin-top: 15px;
+}
+
+.copyText {
+  height: 50px;
+  text-align: left;
+  margin-top: 15px;
+}
+
 .count {
   font-size: 12px;
   color: $tgray;
   margin-left: 5px;
+}
+
+.cancel {
+  height: 50px;
+  line-height: 50px;
+  border: solid 1px $tgraywhite;
+  border-radius: 50px;
 }

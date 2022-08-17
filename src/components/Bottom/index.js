@@ -1,7 +1,5 @@
 import { TabBar } from 'antd-mobile';
-import { useEffect } from 'react';
 import { menu } from '@utils/constants';
-import { useAppContext } from '@utils/context';
 import { useGoto, useAttribute } from '@utils/hooks';
 import style from './index.module.scss';
 
@@ -10,7 +8,6 @@ import style from './index.module.scss';
 */
 
 const Bottom = () => {
-  const [, setStore] = useAppContext();
   const navigate = useGoto();
   const item = useAttribute();
   const itemDisplay = (it) => {
@@ -20,14 +17,6 @@ const Bottom = () => {
     return <TabBar.Item key={it.key} icon={it.icon} />;
   };
 
-  useEffect(() => {
-    if (item) {
-      setStore({
-        title: item.title,
-      });
-    }
-  }, []);
-
   const onClickTabItem = (key) => {
     navigate(key);
   };
@@ -35,7 +24,6 @@ const Bottom = () => {
   if (item.hideCommonHeader) {
     return null;
   }
-
   return (
     <div className={style.container}>
       <TabBar onChange={onClickTabItem}>

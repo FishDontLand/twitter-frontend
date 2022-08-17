@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Bar from '@components/Bar';
+import { LIKETYPE } from '@components/Bar/constants';
 import style from './index.module.scss';
 
 /**
@@ -54,7 +55,14 @@ const ImageCard = ({
           onClose={() => { setVisible(false); }}
         />
       </div>
-      {visible && <Bar isBottom likeCount={likeCount} commentCount={commentCount} />}
+      {visible && (
+      <Bar
+        isBottom
+        likeCount={likeCount}
+        commentCount={commentCount}
+        type={LIKETYPE.TWEET}
+      />
+      )}
     </div>
   );
 };

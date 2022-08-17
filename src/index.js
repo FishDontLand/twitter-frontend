@@ -11,7 +11,7 @@ import Tweets from '@containers/Tweets';
 import Comment from '@containers/Comment';
 import Register from './containers/Register';
 import CreateTweet from './containers/CreateTweet';
-import TweetComments                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   from 
+import Tweet from './containers/Tweet';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -30,7 +30,7 @@ root.render(
               <Route path="/notification" element={<Comment />} />
               <Route path="/message" element={<Comment />} />
               <Route path="/createTweet" element={<CreateTweet />} />
-              <Route path="/tweetComments" element={<TweetComments />} />
+              <Route path="/tweet/:id" element={<Tweet />} />
             </Route>
           </Routes>
         </BrowserRouter>

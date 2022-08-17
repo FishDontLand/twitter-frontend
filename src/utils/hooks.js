@@ -16,15 +16,16 @@ export const useAttribute = () => {
 export const useGoto = () => {
   const navigate = useNavigate();
   const [, setStore] = useAppContext();
-  return (key) => {
+  return (key, params) => {
     if (!key) {
       return navigate(-1);
     }
-    const it = menu.find((item) => item.key === key);
+    const path = params ? `/${key}/${params.id}` : `/${key}`;
+    const it = menu.find((item) => matchPath(item.link, path));
     if (!it) return navigate('/');
     setStore({
       title: it.title,
     });
-    return navigate(it.link);
+    return navigate(path);
   };
 };

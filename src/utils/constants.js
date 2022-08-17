@@ -34,15 +34,19 @@ export const menu = [{
 },
 {
   key: 'comment',
-  title: 'comments',
-  link: '/comments/:id',
+  link: '/makeComments/:id',
   hideCommonHeader: true,
   inBottomBar: false,
 },
 {
   key: 'creatTweet',
-  title: 'createTweet',
   link: '/createTweet',
+  hideCommonHeader: true,
+},
+{
+  key: 'tweet',
+  title: 'Tweet',
+  link: '/tweet/:id',
   hideCommonHeader: true,
 },
 ];

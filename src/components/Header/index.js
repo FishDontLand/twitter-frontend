@@ -21,10 +21,17 @@ const Header = ({
     if (attributes.hideCommonHeader) {
       result.push(
         <div className={style.headerWrapper} key="backHeader">
-          <img src={leftArrow} alt="back" className={style.back} onClick={navigate} />
+          <img src={leftArrow} alt="back" className={style.back} onClick={() => navigate()} />
           {children}
         </div>,
       );
+      if (attributes.title) {
+        result.push(
+          <span className={style.title} key="title">
+            {attributes.title}
+          </span>,
+        );
+      }
     } else {
       result.push(
         <div className={style.backHeader} key="avatarUrl">
@@ -33,7 +40,7 @@ const Header = ({
       );
       result.push(
         <span className={style.title} key="title">
-          {store.title}
+          {attributes.title}
         </span>,
       );
     }

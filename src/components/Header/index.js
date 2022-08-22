@@ -4,6 +4,8 @@ import { useGoto, useAttribute } from '@utils/hooks';
 import leftArrow from '@assets/left-arrow.svg';
 import logo from '@assets/twitter-logo.svg';
 import PropTypes from 'prop-types';
+import MyPopUp from '@components/MyPopup';
+import { useState } from 'react';
 import style from './index.module.scss';
 
 /**
@@ -11,11 +13,13 @@ import style from './index.module.scss';
  */
 const Header = ({
   children,
+  title,
 }) => {
   const [store] = useAppContext();
   const result = [];
   const navigate = useGoto();
   const attributes = useAttribute();
+  const [visible, setVisible] = useState(false);
   // header to display when logged in
   if (store.user) {
     if (attributes.hideCommonHeader) {
@@ -25,7 +29,13 @@ const Header = ({
           {children}
         </div>,
       );
-      if (attributes.title) {
+      if (title) {
+        result.push(
+          <span className={style.title} key="custom title">
+            {title}
+          </span>,
+        );
+      } else if (attributes.title) {
         result.push(
           <span className={style.title} key="title">
             {attributes.title}
@@ -34,7 +44,10 @@ const Header = ({
       }
     } else {
       result.push(
-        <div className={style.backHeader} key="avatarUrl">
+        <MyPopUp visible={visible} onClose={() => { setVisible(false); }} key="popup" />,
+      );
+      result.push(
+        <div className={style.backHeader} key="avatarUrl" onClick={() => { setVisible(true); }}>
           <img src={store.user?.avatar_url} alt="User avatar" className={style.avatar} />
         </div>,
       );
@@ -65,10 +78,12 @@ const Header = ({
 
 Header.propTypes = {
   children: PropTypes.node,
+  title: PropTypes.string,
 };
 
 Header.defaultProps = {
   children: null,
+  title: null,
 };
 
 export default Header;

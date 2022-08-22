@@ -13,6 +13,7 @@ import style from './index.module.scss';
 const TweetCard = ({
   dataSource,
 }) => {
+  console.log(dataSource);
   const nav = useGoto();
   return (
     <div className={style.container}>

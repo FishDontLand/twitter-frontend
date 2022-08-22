@@ -49,4 +49,9 @@ export const menu = [{
   link: '/tweet/:id',
   hideCommonHeader: true,
 },
+{
+  key: 'myPage',
+  link: '/myPage',
+  hideCommonHeader: true,
+},
 ];

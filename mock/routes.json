@@ -1,4 +1,5 @@
 {
+  "/api/newsfeeds": "/newsfeeds",
   "/api/likes/cancel": "/likes",
   "/api/likes": "/likes",
   "/api/tweets": "/tweets",

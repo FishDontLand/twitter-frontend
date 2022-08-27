@@ -64,7 +64,6 @@ const tweet = {
 const Tweet = () => {
   const [data, setData] = useState(tweet);
   useEffect(() => {
-    console.log('data', data);
     setData(tweet);
   }, []);
   return (

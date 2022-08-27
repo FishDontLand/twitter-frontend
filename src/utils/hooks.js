@@ -21,8 +21,7 @@ export const useGoto = () => {
     if (!key) {
       return navigate(-1);
     }
-    const path = params ? `/${key}/${params.id}` : `/${key}`;
-    console.log(path);
+    const path = params ? `/${key}/${params.id}` : `${key}`;
     const it = menu.find((item) => matchPath(item.link, path));
     if (!it) return navigate('/');
     setStore({

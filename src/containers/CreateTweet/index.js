@@ -20,8 +20,9 @@ const CreateTweet = () => {
 
   const onClickCreateTweet = () => {
     createTweets({
-      text,
-      files: Object.values(imgs),
+      content: text,
+      id: store.user.id,
+      photo_urls: Object.values(imgs),
     }).then((res) => {
       if (res.success) {
         Toast.show('Successfully posted');
@@ -65,7 +66,7 @@ const CreateTweet = () => {
           disabled={text.length === 0 && Object.keys(imgs).length === 0}
           onClick={onClickCreateTweet}
         >
-          Reply
+          Tweet
 
         </TButton>
       </Header>

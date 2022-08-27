@@ -1,0 +1,12 @@
+@import "../../index.scss";
+.avatarWrapper {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: $tgray;
+  overflow: hidden;
+}
+.avatar {
+  height: 100%;
+  width: 100%;
+}

@@ -49,7 +49,6 @@ const Tweets = () => {
   const [hasMore, setHasMore] = useState(true);
   const handleLoadMore = async () => {
     const res = await getNewsFeeds();
-    console.log(res);
     setData((prevValue) => [...prevValue, ...res]);
     // temporary solution, since we always return 2 more tweets after sending requests
     if (res.length === 0) {

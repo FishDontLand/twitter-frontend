@@ -1,8 +1,10 @@
-import { Popup } from 'antd-mobile';
+import { Popup, Toast } from 'antd-mobile';
 import { UserOutline } from 'antd-mobile-icons';
 import PropTypes from 'prop-types';
 import { useAppContext } from '@utils/context';
 import { useGoto } from '@utils/hooks';
+import Avatar from '@components/Avatar';
+import Cookies from 'js-cookie';
 import style from './index.module.scss';
 
 /**
@@ -14,6 +16,11 @@ const MyPopUp = ({
 }) => {
   const [store] = useAppContext();
   const go = useGoto();
+  const handleLogout = () => {
+    Cookies.set('userId', '');
+    Toast.show('Successfully logged out');
+    window.location.reload();
+  };
   return (
     <div className={style.container}>
       <Popup
@@ -24,7 +31,7 @@ const MyPopUp = ({
       >
         <div className={style.container}>
           <div className={style.title}>Account</div>
-          <img src={store.user?.avatar_url} alt="avatar" className={style.avatar} />
+          <Avatar avatarUrl={store.user?.avatar_url} className={style.avatar} />
           <div className={style.nickname}>
             {store.user?.nickname || 'no nickname'}
           </div>
@@ -38,13 +45,13 @@ const MyPopUp = ({
             <span className={style.followerNum}>200</span>
             Follower
           </div>
-          <div className={style.listItem} onClick={() => { go('myPage'); }}>
+          <div className={style.listItem} onClick={() => { go('/myPage'); }}>
             <UserOutline />
             <span className={style.info}>
               User Info
             </span>
           </div>
-          <div className={style.footer}>
+          <div className={style.footer} onClick={handleLogout}>
             Logout
           </div>
         </div>

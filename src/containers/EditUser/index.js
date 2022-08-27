@@ -5,6 +5,8 @@ import TButton from '@components/TButton';
 import Header from '@components/Header';
 import { toBase64 } from '@utils/';
 import { useAppContext } from '@utils/context';
+import { editUser } from '@services/register';
+import { Toast } from 'antd-mobile';
 import style from './index.module.scss';
 
 /**
@@ -16,8 +18,8 @@ const EditUser = () => {
 
   const [store] = useAppContext();
 
-  const onNameChange = (e) => {
-    setNickName(e.target.value);
+  const onNameChange = (value) => {
+    setNickName(value);
   };
 
   const onFileChange = (e) => {
@@ -27,24 +29,44 @@ const EditUser = () => {
       setAvatar(res);
     });
   };
+
+  const handleSave = async () => {
+    if (!nickName || !avatar) {
+      const res = await editUser(store.user?.id, {
+        ...store.user,
+        nickname: nickName || store.user.nickName,
+        avatar_url: avatar || store.user.avatar,
+      });
+      if (res.data) {
+        Toast.show('Successfully Saved!');
+        window.location.reload();
+      }
+      return;
+    }
+
+    Toast.show('Please edit username or upload avatar');
+  };
+
   return (
     <div className={style.container}>
       <Header>
-        <TButton>Save</TButton>
+        <TButton onClick={handleSave}>Save</TButton>
       </Header>
       <div className={style.header} />
       <div className={style.avatarWrap}>
-        <CameraOutline />
+        <div className={style.photoIcon}>
+          <CameraOutline />
+        </div>
+        <input
+          type="file"
+          className={style.uploadFile}
+          onChange={onFileChange}
+          accept="image/png, image/jpeg"
+        />
+        <img className={style.avatar} src={avatar || store.user?.avatar_url} alt="" />
       </div>
-      <input
-        type="file"
-        className={style.uploadFile}
-        onChange={onFileChange}
-        accept="image/png, image/jpeg"
-      />
-      <img className={style.avatar} src={avatar || store.user?.avatar_url} alt="" />
       <div className={style.content}>
-        <Tinput label="full name" onChange={onNameChange} value={nickName || store.user?.nickname} />
+        <Tinput label="full name" onChange={onNameChange} value={nickName || store.user?.nickname} length={50} />
       </div>
     </div>
 

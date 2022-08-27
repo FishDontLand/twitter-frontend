@@ -18,7 +18,7 @@ const Bottom = () => {
   };
 
   const onClickTabItem = (key) => {
-    navigate(key);
+    navigate(`/${key}`);
   };
 
   if (item.hideCommonHeader) {
@@ -26,7 +26,7 @@ const Bottom = () => {
   }
   return (
     <div className={style.container}>
-      <TabBar onChange={onClickTabItem}>
+      <TabBar onChange={onClickTabItem} defaultActiveKey={item.key}>
         {menu.map(itemDisplay)}
       </TabBar>
     </div>

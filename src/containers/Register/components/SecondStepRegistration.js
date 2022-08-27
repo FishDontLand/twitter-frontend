@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Input } from 'antd-mobile';
 import PropTypes from 'prop-types';
+import { useGoto } from '@utils/hooks';
 import Footer from './Footer';
 import style from '../index.module.scss';
 
@@ -10,9 +11,11 @@ const SecondStepRegistration = ({
 }) => {
   const [password, setPassword] = useState();
   const [disabled, setDisabled] = useState(true);
+  const nav = useGoto();
 
   const onConfirmRegister = () => {
     confirmRegisterHandler(password);
+    nav('/login');
   };
 
   const onChangePwd = (val) => {

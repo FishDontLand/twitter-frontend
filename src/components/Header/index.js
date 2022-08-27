@@ -6,6 +6,7 @@ import logo from '@assets/twitter-logo.svg';
 import PropTypes from 'prop-types';
 import MyPopUp from '@components/MyPopup';
 import { useState } from 'react';
+import Avatar from '@components/Avatar';
 import style from './index.module.scss';
 
 /**
@@ -47,9 +48,7 @@ const Header = ({
         <MyPopUp visible={visible} onClose={() => { setVisible(false); }} key="popup" />,
       );
       result.push(
-        <div className={style.backHeader} key="avatarUrl" onClick={() => { setVisible(true); }}>
-          <img src={store.user?.avatar_url} alt="User avatar" className={style.avatar} />
-        </div>,
+        <Avatar key="avatarUrl" onClick={() => { setVisible(true); }} avatarUrl={store.user?.avatar_url} className={style.backHeader} />,
       );
       result.push(
         <span className={style.title} key="title">

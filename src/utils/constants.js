@@ -1,36 +1,23 @@
-import email from '@assets/email.svg';
-import home from '@assets/home.svg';
-import notification from '@assets/notification.svg';
-import search from '@assets/search.svg';
-import style from '../common.module.scss';
+// import home from '@assets/home.svg';
+// import profile from '@assets/profile.svg';
+// import style from '../common.module.scss';
+import { UnorderedListOutline, UserCircleOutline } from 'antd-mobile-icons';
 
 export const menu = [{
   key: 'home',
-  icon: <img className={style.icon} src={home} alt="home" />,
+  // icon: <img className={style.icon} src={home} alt="home" />,
+  icon: <UnorderedListOutline />,
   link: '/',
   inBottomBar: true,
   title: 'Home',
 },
 {
-  key: 'search',
-  link: '/search',
-  icon: <img className={style.icon} src={search} alt="" />,
+  key: 'myPage',
+  link: '/myPage',
+  // icon: <img className={style.icon} src={profile} alt="" />,
+  icon: <UserCircleOutline />,
   inBottomBar: true,
-},
-{
-  key: 'notification',
-  title: 'Notification',
-  link: '/notification',
-  icon: <img className={style.icon} src={notification} alt="" />,
-  inBottomBar: true,
-},
-{
-  key: 'message',
-  title: 'Message',
-  link: '/message',
-  icon: <img className={style.icon} src={email} alt="" />,
   hideCommonHeader: false,
-  inBottomBar: true,
 },
 {
   key: 'comment',
@@ -50,8 +37,18 @@ export const menu = [{
   hideCommonHeader: true,
 },
 {
-  key: 'myPage',
-  link: '/myPage',
+  key: 'editUser',
+  link: '/editUser',
+  hideCommonHeader: true,
+},
+{
+  key: 'login',
+  link: '/login',
+  hideCommonHeader: true,
+},
+{
+  key: 'register',
+  link: '/register',
   hideCommonHeader: true,
 },
 ];

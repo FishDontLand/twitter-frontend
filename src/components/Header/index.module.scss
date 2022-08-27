@@ -25,15 +25,6 @@
   left: 11px;
   font-size: 16px;
 }
-.avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-  position: absolute;
-  top: 22px;
-  left: 22px;
-}
-
 .title {
   top: 10px;
   font-size: 14px;
@@ -50,5 +41,11 @@
   float: left;
   margin-top: 25px;
   margin-left: 25px;
+}
+
+.backHeader {
+  position: absolute;
+  top: 22px;
+  left: 22px;
 }
 

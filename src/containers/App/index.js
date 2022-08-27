@@ -11,16 +11,22 @@ import style from './index.module.scss';
 import { getUser } from '../../services/login';
 
 const App = () => {
-  const [, setStore] = useAppContext();
+  const [store, setStore] = useAppContext();
   const nav = useNavigate();
   const location = useLocation();
   const attributes = useAttribute();
   useEffect(() => {
     const init = async () => {
+      if (attributes.key === 'register') {
+        return;
+      }
       const userId = Cookies.get('userId');
       if (!userId) {
         Toast.show('Please login again');
         nav('/login');
+        return;
+      }
+      if (store.user) {
         return;
       }
       const res = await getUser(userId);
@@ -29,14 +35,14 @@ const App = () => {
           user: res.data,
         });
         if (location.pathname === '/login') {
-          nav('/tweets');
+          nav('/');
         }
         return;
       }
       nav('login');
     };
     init();
-  }, []);
+  }, [location.pathname]);
 
   const onClickCreateTweet = () => {
     nav('/createTweet');
@@ -46,7 +52,7 @@ const App = () => {
     <div className={style.layout}>
       {!attributes.hideCommonHeader && <Header />}
       <Outlet />
-      <Bottom />
+      {attributes.key !== 'register' && <Bottom />}
       {!attributes.hideCommonHeader && <CreateTweetButton onClick={onClickCreateTweet} />}
     </div>
   );

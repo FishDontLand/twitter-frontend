@@ -6,12 +6,14 @@ import {
 import { Link } from 'react-router-dom';
 import Tinput from '@components/Tinput';
 import { useAppContext } from '@utils/context';
+import { useGoto } from '@utils/hooks';
 import style from './index.module.scss';
 import { login } from '../../services/login';
 
 const Login = () => {
   const [form] = Form.useForm();
   const [, setStore] = useAppContext();
+  const nav = useGoto();
 
   useEffect(() => {
     setStore({
@@ -30,6 +32,7 @@ const Login = () => {
           closeOnAction: true,
         });
         Cookies.set('userId', res.data[0].id);
+        nav('/');
         return;
       }
 

@@ -23,7 +23,6 @@ const Bar = ({
   const [activeKey, setActiveKey] = useState();
   const [visible, setVisible] = useState(false);
   const [liked, setLiked] = useState(false);
-
   const onAction = (e) => {
     if (e.key === ACTIONKEYS.COPY) {
       if (navigator.clipboard) {

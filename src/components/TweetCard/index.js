@@ -28,11 +28,12 @@ const TweetCard = ({
             @
             <span className={style.userName}>{dataSource.user.username}</span>
             &nbsp; · &nbsp;
-            {`${moment(dataSource.created_at).format('MM')}m`}
+            {`${moment(dataSource.created_at).format('mm')}m`}
           </div>
           <div className={style.content} onClick={() => nav('tweet', { id: dataSource.id })}>
             {dataSource.content}
           </div>
+          {dataSource.photo_urls && dataSource.photo_urls.length > 0 && (
           <div className={style.photo}>
             <ImageCard
               imgs={dataSource.photo_urls}
@@ -40,6 +41,7 @@ const TweetCard = ({
               likeCount={dataSource.likes_count}
             />
           </div>
+          )}
           <div className={style.bar}>
             <Bar
               id={dataSource.id}

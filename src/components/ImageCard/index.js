@@ -1,5 +1,5 @@
 import { Image, ImageViewer } from 'antd-mobile';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Bar from '@components/Bar';
@@ -38,6 +38,16 @@ const ImageCard = ({
 
   const imageViewRef = useRef();
   const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    if (visible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  });
   const onClickImage = (i) => {
     setVisible(true);
     imageViewRef.current.swipeTo(i, true);
@@ -49,20 +59,22 @@ const ImageCard = ({
       </div>
       <div style={{ transition: '10s' }}>
         <ImageViewer.Multi
+          getContainer={document.body}
           ref={imageViewRef}
           images={imgs}
           visible={visible}
           onClose={() => { setVisible(false); }}
+          renderFooter={() => (
+            <Bar
+              isBottom
+              id={1231}
+              likeCount={likeCount}
+              commentCount={commentCount}
+              type={LIKETYPE.TWEET}
+            />
+          )}
         />
       </div>
-      {visible && (
-      <Bar
-        isBottom
-        likeCount={likeCount}
-        commentCount={commentCount}
-        type={LIKETYPE.TWEET}
-      />
-      )}
     </div>
   );
 };

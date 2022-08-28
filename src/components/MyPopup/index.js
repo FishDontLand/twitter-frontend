@@ -21,6 +21,10 @@ const MyPopUp = ({
     Toast.show('Successfully logged out');
     window.location.reload();
   };
+  const handleToUserInfo = () => {
+    onClose();
+    go('/myPage');
+  };
   return (
     <div className={style.container}>
       <Popup
@@ -45,7 +49,7 @@ const MyPopUp = ({
             <span className={style.followerNum}>200</span>
             Follower
           </div>
-          <div className={style.listItem} onClick={() => { go('/myPage'); }}>
+          <div className={style.listItem} onClick={handleToUserInfo}>
             <UserOutline />
             <span className={style.info}>
               User Info

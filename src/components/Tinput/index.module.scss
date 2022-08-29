@@ -1,7 +1,7 @@
-@import '../../common.module.scss';
+@import '../../index.scss';
 
 .tinput {
-  composes: input;
+  composes: input from '../../common.module.scss';
   position: relative;
   :global(.adm-input) {
     border: none;

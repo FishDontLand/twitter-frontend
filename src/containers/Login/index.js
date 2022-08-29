@@ -1,17 +1,19 @@
-import Tinput from '@components/Tinput';
 import { useEffect } from 'react';
+import Cookies from 'js-cookie';
 import {
   Button, Form, Dialog,
 } from 'antd-mobile';
 import { Link } from 'react-router-dom';
+import Tinput from '@components/Tinput';
 import { useAppContext } from '@utils/context';
+import { useGoto } from '@utils/hooks';
 import style from './index.module.scss';
 import { login } from '../../services/login';
 
 const Login = () => {
   const [form] = Form.useForm();
-
   const [, setStore] = useAppContext();
+  const nav = useGoto();
 
   useEffect(() => {
     setStore({
@@ -29,6 +31,8 @@ const Login = () => {
           actions: [{ key: 'confirmation', text: 'Confirm' }],
           closeOnAction: true,
         });
+        Cookies.set('userId', res.data[0].id);
+        nav('/');
         return;
       }
 

@@ -3,17 +3,19 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 
-const defaultStore = {
-  closeHeaderHandler: null,
-};
-
 const AppContext = createContext();
 
 export const ContextProvider = ({ children }) => {
-  const [store, setStore] = useState(defaultStore);
+  const [store, setStore] = useState({});
 
+  const update = (v) => {
+    setStore((prevValue) => ({
+      ...prevValue,
+      ...v,
+    }));
+  };
   const value = useMemo(() => ({
-    store, setStore,
+    store, update,
   }), [store]);
 
   return (
@@ -30,5 +32,5 @@ ContextProvider.propTypes = {
 export const useAppContext = () => {
   const context = useContext(AppContext);
 
-  return [context.store, context.setStore];
+  return [context.store, context.update];
 };

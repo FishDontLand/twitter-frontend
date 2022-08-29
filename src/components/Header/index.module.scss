@@ -1,9 +1,16 @@
+@import '../../index.scss';
 .header {
   height: 70px;
   text-align: center;
   margin-top: 0px;
   border-top: 0px;
   padding-top: 0px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.95);
+  left: 0;
 }
 .logo {
   margin-top: 0px;
@@ -18,3 +25,27 @@
   left: 11px;
   font-size: 16px;
 }
+.title {
+  top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 50px;
+  position: absolute;
+  left: 70px;
+  z-index: 2;
+}
+
+.back {
+  width: 20px;
+  vertical-align: middle;
+  float: left;
+  margin-top: 25px;
+  margin-left: 25px;
+}
+
+.backHeader {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+}
+

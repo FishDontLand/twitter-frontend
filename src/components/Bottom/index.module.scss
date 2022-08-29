@@ -1,0 +1,11 @@
+@import '../../index.scss';
+
+.container{
+  border: 1px solid $tBorder;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+}

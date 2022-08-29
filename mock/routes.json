@@ -1,4 +1,13 @@
 {
+  "/api/friendships/:userId/follow": "/follow/:userId",
+  "/api/profiles/:userId": "/user/:userId",
+  "/api/newsfeeds": "/newsfeeds",
+  "/api/likes/cancel": "/likes",
+  "/api/likes": "/likes",
+  "/api/tweets": "/tweets",
+  "/api/tweets/:userId": "/tweets/:userId",
+  "/api/comments": "/comments", 
   "/api/accounts/signup": "/user",
+  "/api/users/:id": "/user/:id",
   "/api/login/:username/:password": "/user?username=:username&password=:password"
 }

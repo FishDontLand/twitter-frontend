@@ -18,7 +18,7 @@ const Tinput = ({
       setIsFocused(true);
       setHide(true);
     }
-  }, []);
+  }, [value]);
 
   const onFocus = () => {
     setIsFocused(true);

@@ -11,6 +11,7 @@ import Tweets from '@containers/Tweets';
 import Comment from '@containers/Comment';
 import MyPage from '@containers/MyPage';
 import EditUser from '@containers/EditUser';
+import Follow from '@containers/Follow';
 import Register from './containers/Register';
 import CreateTweet from './containers/CreateTweet';
 import Tweet from './containers/Tweet';
@@ -34,6 +35,7 @@ root.render(
             <Route path="/tweet/:id" element={<Tweet />} />
             <Route path="/myPage" element={<MyPage />} />
             <Route path="/editUser" element={<EditUser />} />
+            <Route path="/follow" element={<Follow />} />
           </Route>
         </Routes>
       </BrowserRouter>

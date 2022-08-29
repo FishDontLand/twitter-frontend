@@ -1,4 +1,5 @@
 {
+  "/api/friendships/:userId/follow": "/follow/:userId",
   "/api/profiles/:userId": "/user/:userId",
   "/api/newsfeeds": "/newsfeeds",
   "/api/likes/cancel": "/likes",

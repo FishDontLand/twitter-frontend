@@ -1,4 +1,4 @@
-import { post, get, put } from '../utils/request';
+import { post, get } from '../utils/request';
 
 /**
  * create comments
@@ -15,5 +15,3 @@ export const getNewsFeeds = () => get('/api/newsfeeds').then((res) => {
 export const getTweets = (id) => get('/api/tweets', {
   user_id: id,
 });
-
-export const like = (userId, params) => put(`/api/tweets/${userId}`, params);

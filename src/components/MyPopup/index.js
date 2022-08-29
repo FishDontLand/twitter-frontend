@@ -25,6 +25,12 @@ const MyPopUp = ({
     onClose();
     go('/myPage');
   };
+
+  const handleOnClickFollow = () => {
+    onClose();
+    go('/follow');
+  };
+
   return (
     <div className={style.container}>
       <Popup
@@ -44,10 +50,10 @@ const MyPopUp = ({
             {store.user?.username}
           </div>
           <div className={style.follow}>
-            <span className={style.followingNum}>100</span>
-            Following
-            <span className={style.followerNum}>200</span>
-            Follower
+            <span className={style.followingNum} onClick={handleOnClickFollow}>100</span>
+            <span onClick={handleOnClickFollow}>Following</span>
+            <span className={style.followerNum} onClick={handleOnClickFollow}>200</span>
+            <span onClick={handleOnClickFollow}>Follower</span>
           </div>
           <div className={style.listItem} onClick={handleToUserInfo}>
             <UserOutline />

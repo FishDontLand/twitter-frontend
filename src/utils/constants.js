@@ -51,4 +51,9 @@ export const menu = [{
   link: '/register',
   hideCommonHeader: true,
 },
+{
+  key: 'follow',
+  link: '/follow',
+  hideCommonHeader: true,
+},
 ];
